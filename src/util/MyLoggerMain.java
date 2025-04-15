@@ -6,5 +6,6 @@ public class MyLoggerMain {
         MyLogger.log("123");
         MyLogger.log("안녕하세요");
         MyLogger.log("123");
+        
     }
 }
