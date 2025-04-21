@@ -1,14 +1,12 @@
 package thread.control.printer;
 
-import java.util.Arrays;
+import static util.MyLogger.log;
+
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import static util.MyLogger.log;
-import static util.ThreadUtils.sleep;
-
-public class MyPrinterV1 {
+public class MyPrinterV4 {
 
 	public static void main(String[] args) {
 		Printer printer = new Printer();
@@ -21,6 +19,8 @@ public class MyPrinterV1 {
 			String input = scan.nextLine();
 			if (input.equals("q")) {
 				printer.work = false;
+				thread.interrupt();
+
 				break;
 			}
 
@@ -36,18 +36,23 @@ public class MyPrinterV1 {
 		
 		@Override
 		public void run() {
-			while(work) {
+			while(!Thread.interrupted()) {
 				if (jobQueue.isEmpty()) {
+					Thread.yield(); // 추가
 					continue;
 				}
-				
-				String job = jobQueue.poll();
-				log("출력 시작 : " + job + ", 대기 문서" + jobQueue);
-				sleep(3000);
-				log("출력 완료");
-			}
 
-			log("프린터 작업이 종료되었습니다.");
+				String job = jobQueue.poll();
+                try {
+					log("출력 시작 : " + job + ", 대기 문서" + jobQueue);
+                    Thread.sleep(3000);
+                	log("출력 완료");
+                } catch (InterruptedException e) {
+					log("인터럽트!");
+					break;
+                }
+			}
+			log("프린터 종료");
 		}
 
 		public void addJob(String input) {
