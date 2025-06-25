@@ -1,7 +1,5 @@
-package thread.collection.simple;
+package thread.collection.simple.list;
 
-import thread.collection.simple.list.BasicList;
-import thread.collection.simple.list.SimpleList;
 import static util.MyLogger.log;
 
 public class SimpleListMainV1 {

@@ -1,11 +1,11 @@
-package thread.collection.simple;
+package thread.collection.simple.list;
 
-import thread.collection.simple.list.BasicList;
-import thread.collection.simple.list.SimpleList;
 import static util.MyLogger.log;
 
 public class SimpleListMainV2 {
 
+	
+	
 	public static void main(String[] args) {
 		SimpleList list = new BasicList();
 		
@@ -13,6 +13,10 @@ public class SimpleListMainV2 {
 		list.add("B");
 		
 		log(list.toString());
+	}
+	
+	private static void test(SimpleList list) {
+		log(list.getClass().getSimpleName());
 	}
 
 }
