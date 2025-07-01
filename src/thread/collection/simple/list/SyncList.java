@@ -12,16 +12,15 @@ public class SyncList implements SimpleList{
 	public SyncList() {
 		elementData = new Object[DEFALUT_CAPACITY];
 	}
-	
 
 	@Override
-	public int size() {
+	public synchronized int size() {
 		// TODO Auto-generated method stub
 		return size;
 	}
 
 	@Override
-	public void add(Object e) {
+	public synchronized void add(Object e) {
 		// TODO Auto-generated method stub
 		
 		elementData[size] = e;
@@ -31,14 +30,14 @@ public class SyncList implements SimpleList{
 	}
 
 	@Override
-	public Object get(int index) {
+	public synchronized Object get(int index) {
 		// TODO Auto-generated method stub
 		return elementData[index];
 	}
 
 	
 	@Override
-	public String toString() {
+	public synchronized String toString() {
 		// TODO Auto-generated method stub
 		return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
 	}

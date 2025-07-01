@@ -15,13 +15,13 @@ public class BasicList implements SimpleList{
 	
 
 	@Override
-	public synchronized int size() {
+	public int size() {
 		// TODO Auto-generated method stub
 		return size;
 	}
 
 	@Override
-	public synchronized void add(Object e) {
+	public void add(Object e) {
 		// TODO Auto-generated method stub
 		
 		elementData[size] = e;
@@ -31,14 +31,14 @@ public class BasicList implements SimpleList{
 	}
 
 	@Override
-	public synchronized Object get(int index) {
+	public Object get(int index) {
 		// TODO Auto-generated method stub
 		return elementData[index];
 	}
 
 	
 	@Override
-	public synchronized String toString() {
+	public String toString() {
 		// TODO Auto-generated method stub
 		return Arrays.toString(Arrays.copyOf(elementData, size)) + " size=" + size + ", capacity=" + elementData.length;
 	}

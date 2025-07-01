@@ -5,7 +5,7 @@ import static util.MyLogger.log;
 public class SimpleListMainV1 {
 
 	public static void main(String[] args) {
-		SimpleList list = new BasicList();
+		SimpleList list = new SyncList();
 		
 		list.add("A");
 		list.add("B");
